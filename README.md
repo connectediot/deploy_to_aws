@@ -222,8 +222,13 @@ $ vi ./config/application.yml
 ```
 
 ```yaml
+production: 
   SECRET_KEY_BASE: (방금 생성한 128자리 난수)
+  FB_APP_KEY: ..
+  ..
 ```
+* application.yml 라인 반드시 주의할 것!!space 2칸으로 맞추는 것 추천.
+* 본인 로컬 환경에 있던 내용들 복붙
 
 `production` 환경으로 Database를 생성한다.
 
