@@ -120,7 +120,7 @@ sudo apt-get install -y nginx-extras passenger
 ```
 
 ##### 2.4.2. Ngninx 설정하기
-passenger 설정파일 열어 수정하기
+1. passenger 설정파일 열어 수정하기
 ``` 
 $ sudo vi /etc/nginx/passenger.conf
 ```
@@ -128,13 +128,16 @@ $ sudo vi /etc/nginx/passenger.conf
 passenger_ruby /home/ubuntu/.rbenv/shims/ruby;
 ```
 
-nginx에서 `passenger.conf` 포함하기 (주석해제)
+2. nginx 설정파일 열어 수정하기
+$ sudo vi /etc/nginx/nginx.conf
+
+아래의 코드를 찾아서 주석해제
 ```
 include /etc/nginx/passenger.conf;
 ```
 * tip: vim에서 `set nu`를 통해 라인 수를 확인하면, 63번째 줄에 있다. 
 
-
+아래의 부분을 찾아서 설정
 ```
 server {
         listen 80;
