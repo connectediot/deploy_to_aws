@@ -155,7 +155,7 @@ server {
         server_name         example.com;
         passenger_enabled   on;
         rails_env           production;
-        root                /home/ubuntu/fake_insta/public;
+        root                /home/ubuntu/fake_insta/public; #반드시 아래 주의 사항 확인!!!!!!!!!!~
 
         ## Comment the following block
         # location / {
@@ -166,7 +166,8 @@ server {
 }
 ```
 
-* tip: 36, 39번째 줄 주석처리 41~44 추가, 46~50 주석
+* tip: 36, 39번째 줄 주석처리하면서 확인.
+* root 경로는 /home/ubuntu/_내프로젝트명_/public
 
 ##### 4) 테스트 및 서버 실행
 
