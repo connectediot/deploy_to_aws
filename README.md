@@ -120,7 +120,7 @@ sudo apt-get install -y nginx-extras passenger
 ```
 
 ##### 2.4.2. Ngninx 설정하기
-1. passenger 설정파일 열어 수정하기
+##### 1) passenger 설정파일 열어 수정하기
 ``` 
 $ sudo vi /etc/nginx/passenger.conf
 ```
@@ -128,15 +128,20 @@ $ sudo vi /etc/nginx/passenger.conf
 passenger_ruby /home/ubuntu/.rbenv/shims/ruby;
 ```
 
-2. nginx 설정파일 열어 수정하기
+##### 2) nginx 설정파일 열어 수정하기
+```
 $ sudo vi /etc/nginx/nginx.conf
-
+```
 아래의 코드를 찾아서 주석해제
 ```
 include /etc/nginx/passenger.conf;
 ```
 * tip: vim에서 `set nu`를 통해 라인 수를 확인하면, 63번째 줄에 있다. 
 
+##### 3) nginx 추가 설정 수정
+```
+$ sudo vi /etc/nginx/sites-enabled/default
+```
 아래의 부분을 찾아서 설정
 ```
 server {
@@ -163,15 +168,20 @@ server {
 
 * tip: 36, 39번째 줄 주석처리 41~44 추가, 46~50 주석
 
+##### 4) 테스트 및 서버 실행
+
 설정 파일 편집이 완료되었으면 작성이 잘 되었는지 테스트하기 위하여 아래의 명령어를 입력한다.
 ```
 $ sudo nginx -t
 ```
-만약 문제가 없다면, 아래의 명령어를 입력하여 Nginx를 실행.
+만약 문제가 없다면, 아래의 명령어를 입력하여 Nginx 서버 실행
 ```
 $ sudo service nginx start
 ```
-
+아래의 코드로 종료
+```
+$ sudo service nginx stop
+```
 ##### 2.5.1. Rails 프로젝트 설정
 
 가져온 프로젝트 폴더 안으로 이동한다.
@@ -230,8 +240,10 @@ $ RAILS_ENV=production rake assets:precompile
 $ touch tmp/restart.txt
 ```
 
-Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속이 되는지 확인한다.
-
+nginx가 켜져있는지 확인하고, Lightsail의 IP 주소를 브라우저 주소창에 입력하여 사이트에 접속이 되는지 확인한다.
+```
+$ sudo service nginx start 
+```
 
 ## [AWS RDS](https://aws.amazon.com/ko/rds/?nc2=h_m1) 설정
 > DB 서버를 따로 분리하고 싶은 경우 RDS를 활용할 수 있다. 
